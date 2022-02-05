@@ -8,6 +8,8 @@ import static org.testng.Assert.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class _4_SpartanTestsNavigateBodyWithPath {
 
     @BeforeClass
@@ -46,6 +48,31 @@ public class _4_SpartanTestsNavigateBodyWithPath {
         assertEquals(name, "Lorenza");
         assertEquals(gender, "Female");
         assertEquals(phone, 3312820936l);
+
+
+    }
+
+    @Test
+    public void test2(){
+        Response response = get("/api/spartans");       //extracting all spartans
+
+        //extract first spartan id
+        int firstID = response.body().path("id[0]");
+        System.out.println("firstID = " + firstID);
+
+        //extract first spartan name
+        String firstName = response.body().path("name[0]");
+        System.out.println("firstName = " + firstName);
+
+        //extract last spartan name
+        String lastName = response.body().path("name[-1]");
+        System.out.println("lastName = " + lastName);
+
+        //extract all spartan names
+        List<String> spartanNames = response.body().path("name");
+        System.out.println("spartanNames = " + spartanNames);
+        System.out.println("spartanNames.size() = " + spartanNames.size());
+
 
 
     }
