@@ -73,7 +73,10 @@ public class _4_SpartanTestsNavigateBodyWithPath {
         System.out.println("spartanNames = " + spartanNames);
         System.out.println("spartanNames.size() = " + spartanNames.size());
 
-
+        List<Object> phoneNumbers = response.path("phone");
+        for (Object phoneNumber : phoneNumbers) {
+            System.out.println(phoneNumber);
+        }
 
     }
 
