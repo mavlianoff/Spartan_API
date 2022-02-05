@@ -3,7 +3,6 @@ package APITesting;
 import static io.restassured.RestAssured.*;
 
 import com.google.gson.Gson;
-import groovy.lang.DelegatesTo;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import static org.testng.Assert.*;
