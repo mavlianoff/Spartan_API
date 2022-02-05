@@ -7,6 +7,9 @@ public class Spartan {
     private String gender;
     private long phone;
 
+    public Spartan() {
+    }
+
     public Spartan(int id, String name, String gender, long phone) {
         this.id = id;
         this.name = name;

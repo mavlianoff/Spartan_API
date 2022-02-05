@@ -16,7 +16,7 @@ import java.util.Map;
 public class _9_SpartanPostRequests {
 
     @BeforeClass
-    public void setUpClass(){
+    public void setUpClass() {
         baseURI = "http://54.144.18.36:8000";
     }
     /*
@@ -36,7 +36,7 @@ public class _9_SpartanPostRequests {
      */
 
     @Test
-    public void PostWithString(){
+    public void PostWithString() {
         Response response = given().accept(ContentType.JSON)
                 .and().contentType(ContentType.JSON)
                 .body("{\n" +
@@ -65,7 +65,7 @@ public class _9_SpartanPostRequests {
     }
 
     @Test
-    public void PostWithMap(){
+    public void PostWithMap() {
         Map<String, Object> requestMap = new HashMap<>();
         requestMap.put("name", "MikeMap");
         requestMap.put("gender", "Male");
@@ -79,6 +79,36 @@ public class _9_SpartanPostRequests {
         response.prettyPrint();
 
         //verification part is same as above test1()
+
+
+    }
+
+    @Test
+    public void PostWithPOJO() {
+        //Create a Spartan object and use it as a body for post request
+        Spartan spartan = new Spartan();
+        spartan.setName("MikePOJO");
+        spartan.setGender("Male");
+        spartan.setPhone(5412339843l);
+
+        Response response = given().accept(ContentType.JSON)
+                .and().contentType(ContentType.JSON)
+                .and().body(spartan)
+                .when().post("/api/spartans/");
+
+        assertEquals(response.statusCode(), 201);
+        assertEquals(response.contentType(), "application/json");
+
+        response.prettyPrint();
+
+
+    //========================GET REQUEST==============================
+        Response response2 = given().accept(ContentType.JSON)
+                .pathParam("id", 126)
+                .when().get("/api/spartans/{id}");
+
+        Spartan spartanResponse = response2.body().as(Spartan.class);
+        System.out.println(spartanResponse.toString());
 
 
     }
