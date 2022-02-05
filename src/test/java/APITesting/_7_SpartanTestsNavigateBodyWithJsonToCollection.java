@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.Map;
 
-public class _7_SpartanTestsNavigateWithJsonToCollection {
+public class _7_SpartanTestsNavigateBodyWithJsonToCollection {
 
     //converting json response to Java collection for further navigation: de-serialization
     //json parser (mapper) used here is GSON, library added to pom dependencies
